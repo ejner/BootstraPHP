@@ -1,29 +1,17 @@
-# BootstraPHP
-https://bootstraphp.com
+# Bootstrap Wrapper PHP
+Un fork personal _(y muy experimental)_ de [BootstraPHP](https://github.com/tuxnull/BootstraPHP). Este proyecto **no es ni pretende** ser compatible con BootstraPHP (aunque se pueden hacer ajustes)
 
-A Bootstrap wrapper for PHP
+## Objetivos del fork
+- Documentar el código
+- Refactorizarlo
+- Implementarlo en uno que otro proyecto
 
-## Example Pages
-
-Check out these Websites that use BootstraPHP:
-
-https://bootstraphp.com
-
-https://tuxnull.com
-
-## Install via composer
-
-To install the latest release via composer, run `composer require tuxnull/bootstraphp`.
-
-To install the latest dev-release via composer, run `composer require tuxnull/bootstraphp:dev-master`.
-
-If installing via composer doesn't work, try installing manually.
-
-## Install manually
-
-To install BootstraPHP manually, download bootstrap.php and include the following statement in your PHP scripts: `include ("bootstrap.php");`
-
-
-This wrapper is still highly experimental. If you experience any bugs or have any suggestions feel free to let us know via the Issues tab on our GitHub page.
-
-To get started with BootstraPHP check out the Wiki section on our GitHub page (https://github.com/amazonshitcarshow/BootstraPHP/wiki)
+## Lista de cambios
+0.2
+- Añadido archivo ```example.php``` (por ahora es relativamente inútil, _relativamente_)
+- Creditos al pie de página eliminados _(NOTA: mantiene licencia MIT y copia de licencia como archivo)_
+- ```init_meta()``` bifurcada en ```set_charset( $charset )``` y ```viewport( $content )```
+- ```init_stylesheet()``` es un alias de ```init_cdn_stylesheet()```
+- ```init_cdn_stylesheet( $ver )``` CDN cambiado a [jsDelivr ](https://www.jsdelivr.com/); ahora se puede definir la versión de Bootstrap.
+- Añadidos espacios en todos los lugares donde me gusta colocar espacios
+- Eliminadas las funciones descontinuadas en el proyecto original o sin sentido: ```navbar_finish()``` (descontinuada), ```no_args()``` (inutil), ```text()``` (vacia)
