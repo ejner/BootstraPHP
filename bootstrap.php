@@ -1,6 +1,13 @@
 <?php
 /**
  * Por compatibilidad, tildes y simbolos especiales son omitidos.
+ * 
+ * @package Bootstrap Wrapper PHP
+ * @version 0.3
+ * @author Ejner Galaz
+ * @author tuxnull (autor original, bajo licencia MIT)
+ * @license GNU General Public License v3
+ * @link https://github.com/ejner/Bootstrap-Wrapper-PHP
  */
 
 /**
@@ -58,7 +65,7 @@ function init_cdn_stylesheet( string $ver = '4.3.1' ) {
 /**
  * 
  */
-function init_bootswatch_stylesheet( $style ) {
+function init_bootswatch_stylesheet( string $style ) {
     $style = strtolower( $style );
     return '<link rel="stylesheet" href="https://bootswatch.com/4/' . $style . '/bootstrap.min.css">';
 }
@@ -82,7 +89,7 @@ function init_full_jquery() {
 /**
  * 
  */
-function init_navbar( $args, $content ) {
+function init_navbar( array $args, string $content ) {
     if(  array_key_exists( "style", $args ) ) {
         $style = $args["style"];
     } else {
@@ -115,7 +122,7 @@ function init_navbar( $args, $content ) {
 /**
  * 
  */
-function navbar_element( $args ) {
+function navbar_element( array $args ) {
     if(  array_key_exists( "element", $args ) ) {
         $element = $args["element"];
     } else {
@@ -133,8 +140,6 @@ function navbar_element( $args ) {
     } else {
         return '<b>BootstraPHP has encountered an error: navbar_element is missing required argument "name"';
     }
-
-
 
     if(  array_key_exists( "style",$args ) ) {
         $style = $args["style"];
@@ -182,6 +187,7 @@ function navbar_element( $args ) {
         if( pathinfo( $_SERVER["SCRIPT_FILENAME"],PATHINFO_FILENAME).".".pathinfo( $_SERVER["SCRIPT_FILENAME"],PATHINFO_EXTENSION) == $links_to) {
             $active = true;
         }
+
         if( $links_to == "#" ) {
             $active = true;
         }
@@ -228,7 +234,7 @@ function navbar_element( $args ) {
 /**
  * 
  */
-function dropdown_element( $args ) {
+function dropdown_element( array $args ) {
 
     if(  array_key_exists( "element", $args ) ) {
         $element = $args["element"];
@@ -275,7 +281,7 @@ function navbar_swap_alignment() {
 /**
  * 
  */
-function alert( $args, $content ) {
+function alert( array $args, string $content ) {
     if(  array_key_exists( "dismissable", $args ) ) { #Dismissable attribute is optional, doesnt need to be included in the array this way
         $dismissable = $args["dismissable"];
     } else {
@@ -302,21 +308,21 @@ function alert( $args, $content ) {
 /**
  * 
  */
-function badge( $content, $style ) {
+function badge( string $content, string $style ) {
     return '<span class="badge badge-' . $style . '">' . $content . '</span>';
 }
 
 /**
  * 
  */
-function pill( $content, $style ) {
+function pill( string $content, string $style ) {
     return '<span class="badge badge-pill badge-' . $style . '">' . $content . '</span>';
 }
 
 /**
  * 
  */
-function custom_link( $args, $content ) {
+function custom_link( array $args, string $content ) {
 
     if(  array_key_exists( "element",$args ) ) {
         $element = $args["element"];
@@ -378,7 +384,7 @@ function custom_link( $args, $content ) {
 /**
  * 
  */
-function card( $args, $content ) {
+function card( array $args, string $content ) {
 
     if(  array_key_exists( "image_url",$args ) ) {
         $image_url = $args["image_url"];
@@ -443,7 +449,7 @@ function card( $args, $content ) {
 /**
  * 
  */
-function card_content( $args, $content ) {
+function card_content( array $args, string $content ) {
 
     if( array_key_exists( "title", $args ) ) {
         $title = $args["title"];
@@ -465,7 +471,7 @@ function card_content( $args, $content ) {
 /**
  * 
  */
-function card_list_group( $content ) {
+function card_list_group( string $content ) {
     return '</div>
     <ul class="list-group list-group-flush">
     '.$content.'
@@ -476,7 +482,7 @@ function card_list_group( $content ) {
 /**
  * 
  */
-function list_group_item( $args, $content ) {
+function list_group_item( array $args, string $content ) {
 
     if( array_key_exists( "style",$args ) ) {
         $style = "list-group-item-".$args["style"];
@@ -490,7 +496,7 @@ function list_group_item( $args, $content ) {
 /**
  * 
  */
-function collapsible_div( $args, $content ) {
+function collapsible_div( array $args, string $content ) {
 
     if( array_key_exists( "show", $args ) ) {
         $show = $args["show"];
@@ -516,14 +522,14 @@ function collapsible_div( $args, $content ) {
 /**
  * 
  */
-function collapse_link( $id ) {
+function collapse_link( string $id ) {
     return "javascript:$('#".$id."').collapse('toggle');";
 }
 
 /**
  * 
  */
-function breadcrumb( $content ) {
+function breadcrumb( string $content ) {
     return '<nav aria-label="breadcrumb">
     <ol class="breadcrumb">
     '.$content.'
@@ -534,7 +540,7 @@ function breadcrumb( $content ) {
 /**
  * 
  */
-function breadcrumb_item( $args, $content ) {
+function breadcrumb_item( array $args, string $content ) {
 
     if( array_key_exists( "links_to", $args ) ) {
         $links_to = $args["links_to"];
@@ -566,7 +572,7 @@ function breadcrumb_item( $args, $content ) {
 /**
  * 
  */
-function jumbotron( $args, $content ) {
+function jumbotron( array $args, string $content ) {
 
     if( array_key_exists( "fluid", $args ) ) {
         $fluid = $args["fluid"];
@@ -591,7 +597,7 @@ function jumbotron( $args, $content ) {
 /**
  * 
  */
-function jumbotron_content( $args, $content ) {
+function jumbotron_content( array $args, string $content ) {
 
     if( array_key_exists( "lead_text", $args ) ) {
         $lead_text = $args["lead_text"];
@@ -680,7 +686,7 @@ function jumbotron_content( $args, $content ) {
 /**
  * 
  */
-function spinner( $args ) {
+function spinner( array $args ) {
 
     if( array_key_exists( "type", $args ) ) {
         $type = $args["type"];
@@ -712,7 +718,7 @@ function spinner( $args ) {
 /**
  * 
  */
-function span_spinner( $type ) {
+function span_spinner( array $type ) {
     if( $type == "border" ) {
         return '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
     }else if( $type == "growing" ) {
@@ -725,14 +731,14 @@ function span_spinner( $type ) {
 /**
  * 
  */
-function container( $content ) {
+function container( string $content ) {
     return '<div class="container">'.$content.'</div>';
 }
 
 /**
  * 
  */
-function grid_row( $args, $content ) {
+function grid_row( array $args, string $content ) {
 
     if( array_key_exists( "horizontal_alignment", $args ) ) {
         $horizontal_alignment = $args["horizontal_alignment"];
@@ -750,7 +756,7 @@ function grid_row( $args, $content ) {
 /**
  * 
  */
-function col( $args, $content) {
+function col( array $args, string $content) {
 
     $class = "";
 
@@ -811,7 +817,7 @@ function grid_break() {
 /**
  * 
  */
-function table( $args, $content) {
+function table( array $args, string $content) {
 
     if( array_key_exists( "dark", $args ) ) {
         $dark = $args["dark"];
@@ -856,7 +862,7 @@ function table( $args, $content) {
 /**
  * 
  */
-function table_head( $args, $content ) {
+function table_head( array $args, string $content ) {
 
     if( array_key_exists( "style", $args ) ) {
         $style = $args["style"];
@@ -874,7 +880,7 @@ function table_head( $args, $content ) {
 /**
  * 
  */
-function table_th( $args, $content ) {
+function table_th( array $args, string $content ) {
 
     if( array_key_exists( "scope", $args ) ) {
         $scope = $args["scope"];
@@ -888,21 +894,21 @@ function table_th( $args, $content ) {
 /**
  * 
  */
-function table_body( $content ) {
+function table_body( string $content ) {
     return '<tbody>'.$content.'</tbody>';
 }
 
 /**
  * 
  */
-function table_row( $content ) {
+function table_row( string $content ) {
     return '<tr>'.$content.'</tr>';
 }
 
 /**
  * 
  */
-function table_td( $args, $content ) {
+function table_td( array $args, string $content ) {
 
     if( array_key_exists( "colspan", $args ) ) {
         $colspan = $args["colspan"];
@@ -919,7 +925,7 @@ function table_td( $args, $content ) {
 /**
  * 
  */
-function form( $args, $content ) {
+function form( array $args, string $content ) {
 
     if( array_key_exists( "action", $args ) ) {
         $action = $args["action"];
@@ -949,7 +955,7 @@ function form( $args, $content ) {
 /**
  * 
  */
-function form_input( $args ) {
+function form_input( array $args ) {
 
     if( array_key_exists( "prepend", $args ) ) {
         $prepend = $args["prepend"];
@@ -1003,21 +1009,21 @@ function form_input( $args ) {
 /**
  * 
  */
-function input_group( $content ) {
+function input_group( string $content ) {
     return '<div class="input-group mb-3">'.$content.'</div>';
 }
 
 /**
  * 
  */
-function input_group_prepend( $content ) {
+function input_group_prepend( string $content ) {
     return '<div class="input-group-prepend">'.$content.'</div>';
 }
 
 /**
  * 
  */
-function input( $args ) {
+function input( array $args ) {
 
     if( array_key_exists( "type", $args ) ) {
         $type = $args["type"];
@@ -1049,14 +1055,14 @@ function input( $args ) {
 /**
  * 
  */
-function input_group_append( $content ) {
+function input_group_append( string $content ) {
     return '<div class="input-group-append">'.$content.'</div>';
 }
 
 /**
  * 
  */
-function pagination( $args, $content ) {
+function pagination( array $args, string $content ) {
 
     if( array_key_exists( "alignment", $args ) ) {
         $alignment = $args["alignment"];
@@ -1079,7 +1085,7 @@ function pagination( $args, $content ) {
 /**
  * 
  */
-function page_item( $args, $content ) {
+function page_item( array $args, string $content ) {
 
     if( array_key_exists( "disabled", $args ) ) {
         $disabled = $args["id"];
@@ -1096,7 +1102,7 @@ function page_item( $args, $content ) {
 /**
  * 
  */
-function page_link( $args, $content ) {
+function page_link( array $args, string $content ) {
 
     if( array_key_exists( "links_to", $args ) ) {
         $links_to = $args["links_to"];
@@ -1110,14 +1116,14 @@ function page_link( $args, $content ) {
 /**
  * 
  */
-function list_group( $content ) {
+function list_group( string $content ) {
     return '<ul class="list-group">'.$content.'</ul>';
 }
 
 /**
  * 
  */
-function ext_footer( $content ) {
+function ext_footer( string $content ) {
     return '<footer class="footer">
       <div class="container">
         <span class="text-muted">'.$content.'</span>
@@ -1128,7 +1134,7 @@ function ext_footer( $content ) {
 /**
  * 
  */
-function button_group( $args, $content ) {
+function button_group( array $args, string $content ) {
     if( array_key_exists( "size",$args ) ) {
         $sizing = "btn-group-".$args["size"];
     } else {
@@ -1151,14 +1157,14 @@ function button_group( $args, $content ) {
 /**
  * 
  */
-function button_toolbar( $content ) {
+function button_toolbar( string $content ) {
     return sprintf('<div class="btn-toolbar" role="toolbar">%s</div>',$content);
 }
 
 /**
  * 
  */
-function modal( $args, $content ) {
+function modal( array $args, string $content ) {
     if( array_key_exists( "size",$args ) ) {
         $size = "modal-".$args["size"];
     } else {
@@ -1179,7 +1185,7 @@ function modal( $args, $content ) {
 /**
  * 
  */
-function modal_header( $args ) {
+function modal_header( array $args ) {
     if( array_key_exists( "title",$args ) ) {
         $title = $args["title"];
     } else {
@@ -1207,21 +1213,21 @@ function modal_header( $args ) {
 /**
  * 
  */
-function modal_body( $content ) {
+function modal_body( string $content ) {
     return sprintf('<div class="modal-body">%s</div>',$content);
 }
 
 /**
  * 
  */
-function modal_footer( $content ) {
+function modal_footer( string $content ) {
     return sprintf('<div class="modal-footer">%s</div>',$content);
 }
 
 /**
  * 
  */
-function carousel( $args, $content ) {
+function carousel( array $args, string $content ) {
 
     if( array_key_exists( "controls",$args ) ) {
         $controls = $args["controls"];
@@ -1252,7 +1258,7 @@ function carousel( $args, $content ) {
 /**
  * 
  */
-function carousel_item( $args ) {
+function carousel_item( array $args ) {
     if( array_key_exists( "active",$args ) ) {
         $active = $args["active"];
     } else {
@@ -1282,7 +1288,7 @@ function carousel_item( $args ) {
 /**
  * 
  */
-function progress_bar( $args, $content ) {
+function progress_bar( array $args, string $content ) {
 
     if( array_key_exists( "progress",$args ) ) {
         $progress = $args["progress"];
@@ -1317,7 +1323,7 @@ function progress_bar( $args, $content ) {
     </div>';
 }
 
-function code_text( $args, $content ) {
+function code_text( array $args, string $content ) {
     if( array_key_exists( "bg_bash",$args ) ) {
         $bg_bash = $args["bg_bash"];
     } else {

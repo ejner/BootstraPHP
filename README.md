@@ -7,6 +7,12 @@ Un fork personal _(y muy experimental)_ de [BootstraPHP](https://github.com/tuxn
 - Implementarlo en uno que otro proyecto
 
 ## Lista de cambios
+0.3
+- Añadido tipo de valor para todos los argumentos de todas las funciones. Los argumentos llamados ```$args``` se definieron como tipo ```array```, todos los demás como ```string```.
+- Añadida información del paquete y autor.
+- Eliminado (por ahora) ```composer.json```
+- Eliminado el contenido de ```.gitignore```
+
 0.2
 - Añadido archivo ```example.php``` (por ahora es relativamente inútil, _relativamente_)
 - Creditos al pie de página eliminados _(NOTA: mantiene licencia MIT y copia de licencia como archivo)_
