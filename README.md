@@ -1,4 +1,4 @@
-# Bootstrap Wrapper PHP
+# Bootstrap Wrapper PHP (BWP)
 Un fork personal _(y muy experimental)_ de [BootstraPHP](https://github.com/tuxnull/BootstraPHP). Este proyecto **no es ni pretende** ser compatible con BootstraPHP (aunque se pueden hacer ajustes)
 
 ## Objetivos del fork
